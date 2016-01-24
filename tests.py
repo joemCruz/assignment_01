@@ -1,3 +1,10 @@
+"""--------------------------------------------------------------
+Name: Joseph Cruz
+Class: GIS 321
+
+Assignment 1
+--------------------------------------------------------------"""
+
 import unittest
 
 class Test_Assignment_01(unittest.TestCase):
@@ -35,7 +42,7 @@ class Test_Assignment_01(unittest.TestCase):
     
     def test_assert_truth(self):
         """
-        A test that will pass.
+        A test that will pass
         """
         self.assertTrue(True)
 
@@ -43,14 +50,16 @@ class Test_Assignment_01(unittest.TestCase):
         """
         A test that will fail.
         """
-        self.assertFalse(True, 'This should fail, please fix it.')
+        #[Joseph] changed assertFalse to assertTrue
+        self.assertTrue(True, 'This should fail, please fix it.')
 
     def test_assert_equality(self):
         """
         A test for equality by assigning a value to a variable
         and evaluating an expression.
         """
-        expected_value = _
+        #[Joseph] expected value changed from _ to 2
+        expected_value = 2
         truth_value = 1 + 1
         self.assertEqual(expected_value, truth_value)
 
@@ -58,32 +67,37 @@ class Test_Assignment_01(unittest.TestCase):
         """
         A test to know what the types of the previous fixes were
         """
-        self.assertFalse(True, bool)
+        #[Joseph] changed to assertTrue and isinstance was added to check
+        #if True is of type bool
+        self.assertTrue(isinstance(True, bool))
 
     def test_assert_string(self):
         """
         A test for evaluating an expression
         """
         my_string = 'Hello World'
-        my_string_length = len(my_string)  # The expression
+        #[Joseph] -1 added to remove null at end of string
+        my_string_length = len(my_string)-1  # The expression
         self.assertEqual(10, my_string_length)
 
     def test_big_integers(self):
         """
         A test to explore notation of big integers.
         """
-        x = 42,000
+        #[Joseph] removed comma in 42000
+        x = 42000
         self.assertTrue(isinstance(x, int))
 
     def test_bigger_integers(self):
         """
         A test for bigger, or smaller integers
         """
-        big = 1e6
+        #[Joseph] changed big to 1e2 from 1e6
+        big = 1e2
         self.assertEqual(big, 100)
         self.assertTrue(type(big), int)
-
-        small = 1e-5
+        #[Joseph] changed small to 1e-4 from 1e-5
+        small = 1e-4
         self.assertEqual(small, 0.0001)
         self.assertTrue(type(small), int)
 
@@ -93,11 +107,14 @@ class Test_Assignment_01(unittest.TestCase):
         """
         i = 1
         self.assertTrue(type(i) == int)
+        i= float(i)
         self.assertTrue(isinstance(i, float))  # These lines do the same type checking
         i = float(i)
         self.assertTrue(isinstance(i, float))
-        i = str(i)
-        self.assertFalse(type(i) == str)
+        #[Joseph] i=str(i) is commented out, removes the conversion
+        #and type() is changed to isinstance so assertFalse checks a bool
+        #i = str(i)
+        self.assertFalse(isinstance(i,str))
 
     def test_type_conversion2(self):
         """
@@ -114,7 +131,9 @@ class Test_Assignment_01(unittest.TestCase):
         """
         j = 3.9999
         self.assertTrue(int(j), float)
-        self.assertEqual(int(j), 4)
+        #[Joseph] added 1 because of the rounding error in int. int concatenates
+        #a float to be an integer.
+        self.assertEqual(int(j)+1, 4)
 
     def tearDown(self):
         """
